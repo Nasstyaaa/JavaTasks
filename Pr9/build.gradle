@@ -1,0 +1,37 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+jar{
+    manifest {
+        attributes 'Main-Class': 'org.example.Main'
+    }
+}
+
+task copyJar(type:Copy){
+    dependsOn jar
+    from jar
+    into "Docker"
+}
+
+task runContainer(type:Exec){
+    dependsOn copyJar
+    workingDir "/Docker"
+    commandLine 'cmd', '/c', 'deploy.bat'
+}
