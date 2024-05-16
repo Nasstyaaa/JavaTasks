@@ -1,0 +1,1 @@
+[{"id":1,"firstName":"Петр","lastName":"Петров","dogs":[{"id":1,"name":"Buddy","breed":"Golden Retriever"},{"id":2,"name":"Max","breed":"Labrador Retriever"}]},{"id":2,"firstName":"Иван","lastName":"Иванов","dogs":[{"id":3,"name":"Luna","breed":"Beagle"}]}]

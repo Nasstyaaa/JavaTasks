@@ -1,0 +1,55 @@
+import com.sun.tools.javac.Main
+
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.2.5'
+	id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.hibernate:hibernate-core:6.4.4.Final'
+	implementation 'org.projectlombok:lombok:1.18.28'
+	implementation 'org.springframework.boot:spring-boot-starter-web:2.5.4'
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.security:spring-security-web'
+	implementation 'org.springframework.session:spring-session-jdbc'
+	implementation 'ru.spb.devclub:delegating-spring-request-context:1.0'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:3.2.5'
+	implementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+	implementation 'org.mockito:mockito-core:5.11.0'
+	implementation 'org.mockito:mockito-junit-jupiter:3.12.4'
+	implementation 'org.springframework.boot:spring-boot-starter-test:3.2.5'
+	runtimeOnly 'org.postgresql:postgresql'
+	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+	testImplementation 'org.mockito:mockito-junit-jupiter:3.12.4'
+	testImplementation 'org.mockito:mockito-core:5.11.0'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	annotationProcessor 'org.projectlombok:lombok:1.18.28'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+task runPr15Application(type: JavaExec) {
+	mainClass = 'com.example.Pr15Application'
+	classpath = sourceSets.main.runtimeClasspath
+}
+
+
